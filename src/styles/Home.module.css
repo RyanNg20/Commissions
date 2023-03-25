@@ -10,23 +10,11 @@
 }
 .nav {
   background: linear-gradient(to top,white, white);
-  background-size: 25% 100%;
   background-repeat: no-repeat;
   background-clip: text;
   transition: background-position 0.5s, background-size 0.5s;
-}
-
-.navSlideHome {
-  background-position: 0%;
-  background-size: 25% 100%;
-}
-.navSlidePrices {
-  background-position: 30%;
-  background-size: 25% 100%;
-}
-.navSlideTOS {
-  background-position: 100%;
-  background-size: 50% 100%;
+  width: 100%;
+  margin-top: 4rem;
 }
 
 .title {
@@ -39,14 +27,74 @@
 }
 
 .social {
-  margin-top: 0.8rem;
+  margin-top: 0.6rem;
+  /* transform: scale(1.2); */
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  transform: scale(1.1)
 }
-
+.instagramWrapper {
+  display: flex;
+  height: fit-content;
+  padding: 7px 7px 7px 7px;
+  border-radius: 2px;
+  transition: background-color 0.5s;
+  border-radius: 100%;
+  transform: translateY(-5px);
+}
+.instagramWrapper:hover {
+  background-color: white;
+}
+.instagramWrapper:hover .instagram {
+  fill: url(#paint0_linear_246_103);
+}
 .instagram {
-  margin-right: 4px;
+  fill: rgba(255,255,255,0.7);
+  transition: fill 0.5s;
 }
 
-.navText {
+.twitterWrapper {
+  display: flex;
+  height: fit-content;
+  padding: 7px 7px 7px 7px;
+  transition: background-color 0.5s;
+  margin: 0px 20px 0px 20px;
+  border-radius: 100%;
+}
+.twitterWrapper:hover {
+  background-color: white;
+}
+.twitterWrapper:hover .twitter {
+  fill: #1DA1F2;
+}
+.twitter {
+  fill: rgba(255,255,255,0.7);
+  transition: fill 0.5s;
+}
+
+
+.deviantWrapper {
+  display: flex;
+  height: fit-content;
+  padding: 7px 6px 7px 6px;
+  border-radius: 2px;
+  transition: background-color 0.5s;
+  border-radius: 100%;
+  transform: translateY(-5px);
+}
+.deviantWrapper:hover {
+  background-color: white;
+}
+.deviantWrapper:hover .deviant {
+  fill: #5ACF5F;
+}
+.deviant {
+  fill: rgba(255,255,255,0.7);
+  transition: fill 0.5s;
+}
+
+.navTextWrapper {
   color: var(--faded-white);
 }
 
@@ -55,15 +103,13 @@
   height: 1px;
   width: 100%;
 }
-
-.homeText {
-  margin: 0.3rem 0.5rem 0.3rem 0.5rem;
+.navBox {
+  height: 3px;
+  background-color: white;
+  position: relative;
+  top: -1px;
+  transition: left 0.5s, width 0.5s;
 }
-
-.pricesText {
-  margin: 0.3rem 0.5rem 0.3rem 0.5rem;
-}
-
-.tosText {
-  margin: 0.3rem 0.5rem 0.3rem 0.5rem;
+.navText {
+  margin: 0.3rem 0.7rem 0.3rem 0.7rem;
 }

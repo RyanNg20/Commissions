@@ -14,23 +14,46 @@ import Home from '@/components/home'
 
 
 export default function Index() {
-  const [pageN, setPageN] = useState(0)
-  const homeRef = useRef(null)
-  const pricesRef = useRef(null)
-  const tosRef = useRef(null)
-  // const pages = [
-  //   {
-  //     name: "Home",
-  //     ref: useRef(null),
+  const pages = [
+    {
+      name: "Home",
+      ref: useRef(null),
+    },
+    {
+      name: "Prices",
+      ref: useRef(null),
+    },
+    {
+      name: "Terms of Service",
+      ref: useRef(null),
+    },
+  ]
 
-  //   }
-  // ]
+  const [pageN, setPageN] = useState(0)
+  const [navPosition, setNavPosition] = useState(0)
+  const [navSize, setNavSize] = useState(55)
+  const [positions, setPositions] = useState(Array(pages.length).fill(0))
 
   useEffect(() => {
-    console.log(homeRef?homeRef.current.offsetWidth:0)
-    console.log(pricesRef?pricesRef.current.offsetWidth:0)
-    console.log(tosRef?tosRef.current.offsetWidth:0)
-  }, [homeRef.current, pricesRef.current, tosRef.current])
+    let temp = Array(pages.length).fill(0)
+    for (let i = 0; i < pages.length; i++) {
+      for (let j = 0; j < pages.length; j++) {
+        if (j < i) {
+          temp[i] += pages[j].ref.current.offsetWidth
+        }
+      }
+    }
+    setPositions(temp)
+  }, [pages[0].ref])
+
+  useEffect(() => {
+    for (let i = 0; i < pages.length; i++) {
+      if (pageN == i) {
+        setNavSize(pages[i].ref.current.offsetWidth)
+        setNavPosition(positions[i])
+      }
+    }
+  }, [pageN])
 
   return (
     <>
@@ -43,28 +66,38 @@ export default function Index() {
       <main className={`${inter.className}`}>
         <div className={styles.midground}>
           <header>
-            <Image src={"/4.png"} alt="picture of a girl" width={250} height={250} priority className={styles.logo}/>
+            <Image src={"/4.png"} alt="picture of a girl" width={250} height={250} priority className={styles.logo} quality={100}/>
+            <div className={styles.social}>
+              <a rel='noreferrer noopener' target='_blank' href='https://www.instagram.com/ferreroropher/' className={styles.instagramWrapper}>
+                <Instagram/>
+              </a>
+              <a rel='noreferrer noopener' target='_blank' href='https://twitter.com/FerreroRopher' className={styles.twitterWrapper}>
+                <Twitter/>
+              </a>
+              <a rel='noreferrer noopener' target='_blank' href='https://www.deviantart.com/ropher20' className={styles.deviantWrapper}>
+                <Deviant/>
+              </a>
+            </div>
+            <div style={{backgroundColor: 'rgba(255,255,255,0.5)', height: 1, width: '50%', marginTop: "1rem"}}/>
             <h1 className={styles.title}>@FerreroRopher</h1>
             <h3>[Commissions Open]</h3>
-            <div className={styles.social}>
-              <Instagram/>
-              <Twitter/>
-              <Deviant/>
-            </div>
           </header>
-          <nav className={`${styles.nav} ${pageN == 0 && styles.navSlideHome} ${pageN == 1 && styles.navSlidePrices} ${pageN == 2 && styles.navSlideTOS}`}>
-            <div className={styles.navText}>
-              <button onClick={() => {setPageN(0)}} className={styles.homeBut} ref={homeRef}>
-                <h4 className={styles.homeText}>Home</h4>
-              </button>
-              <button onClick={() => {setPageN(1)}} className={styles.pricesBut} ref={pricesRef}>
-                <h4 className={styles.pricesText}>Prices</h4>
-              </button>
-              <button onClick={() => {setPageN(2)}} className={styles.tosBut} ref={tosRef}>
-                <h4 className={styles.tosText}>Terms of Service</h4>
-              </button>
+          <nav 
+            // className={`${styles.nav} ${pageN == 0 && styles.navSlideHome} ${pageN == 1 && styles.navSlidePrices} ${pageN == 2 && styles.navSlideTOS}`}
+            className={`${styles.nav}`}
+            style={{backgroundPosition: navPosition, backgroundSize: navSize}}
+          >
+            <div className={styles.navTextWrapper}>
+              {pages.map((page,index) => {
+                return (
+                  <button onClick={() => {setPageN(index)}} className={styles.homeBut} ref={page.ref}>
+                    <h4 className={styles.navText} style={{fontWeight: pageN == index?'400':'300'}}>{page.name}</h4>
+                  </button>
+                )
+              })}
             </div>
             <div className={styles.navLine}/>
+            <div className={styles.navBox} style={{width: navSize, left: navPosition}}/>
           </nav>
           {/* {pageN == 0 &&
             <Home/>
