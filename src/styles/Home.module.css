@@ -1,20 +1,64 @@
 .midground {
-  border-radius: 20px;
   height: fit-content;
   width: fit-content;
-  background-color: rgba(0,0,0,0.7);
   padding: 3rem 5rem 5rem 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: width 1s, height 1s;
+  position: relative;
+  overflow: hidden;
+  margin-top: 10rem;
+}
+.box {
+  background-color: rgba(0,0,0,0.7);
+  border-radius: 20px;
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 200px);
+  top: 200px;
 }
 .nav {
+  z-index: 1;
   background: linear-gradient(to top,white, white);
   background-repeat: no-repeat;
   background-clip: text;
   transition: background-position 0.5s, background-size 0.5s;
   width: 100%;
   margin-top: 4rem;
+  /* position: fixed;
+  top: 0px; */
+}
+
+/* .navBackground {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.7);
+  z-index: -1;
+} */
+.navTextWrapper {
+  color: var(--faded-white);
+  z-index: 1;
+}
+
+.navLine {
+  background-color: var(--faded-white);
+  height: 1px;
+  width: 100%;
+  z-index: 1;
+}
+.navBox {
+  height: 3px;
+  background-color: white;
+  position: relative;
+  top: -1px;
+  transition: left 0.5s, width 0.5s;
+  z-index: 1;
+}
+.navText {
+  margin: 0.5rem 1.5rem 0.5rem 1.5rem;
+  z-index: 1;
 }
 
 .title {
@@ -27,7 +71,7 @@
 }
 
 .social {
-  margin-top: 0.6rem;
+  margin-top: 1rem;
   /* transform: scale(1.2); */
   display: flex;
   flex-direction: row;
@@ -94,22 +138,3 @@
   transition: fill 0.5s;
 }
 
-.navTextWrapper {
-  color: var(--faded-white);
-}
-
-.navLine {
-  background-color: var(--faded-white);
-  height: 1px;
-  width: 100%;
-}
-.navBox {
-  height: 3px;
-  background-color: white;
-  position: relative;
-  top: -1px;
-  transition: left 0.5s, width 0.5s;
-}
-.navText {
-  margin: 0.3rem 0.7rem 0.3rem 0.7rem;
-}
