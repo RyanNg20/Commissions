@@ -41,7 +41,6 @@
   border-radius: 2px;
   transition: background-color 0.5s;
   border-radius: 100%;
-  transform: translateY(-5px);
 }
 .instagramWrapper:hover {
   background-color: white;
@@ -81,7 +80,6 @@
   border-radius: 2px;
   transition: background-color 0.5s;
   border-radius: 100%;
-  transform: translateY(-5px);
 }
 .deviantWrapper:hover {
   background-color: white;

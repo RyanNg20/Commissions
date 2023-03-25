@@ -67,6 +67,9 @@ export default function Index() {
         <div className={styles.midground}>
           <header>
             <Image src={"/4.png"} alt="picture of a girl" width={250} height={250} priority className={styles.logo} quality={100}/>
+            <h1 className={styles.title}>@FerreroRopher</h1>
+            <h3>[Commissions Open]</h3>
+            <div style={{backgroundColor: 'rgba(255,255,255,0.5)', height: 1, width: '70%', marginTop: "1rem"}}/>
             <div className={styles.social}>
               <a rel='noreferrer noopener' target='_blank' href='https://www.instagram.com/ferreroropher/' className={styles.instagramWrapper}>
                 <Instagram/>
@@ -78,9 +81,6 @@ export default function Index() {
                 <Deviant/>
               </a>
             </div>
-            <div style={{backgroundColor: 'rgba(255,255,255,0.5)', height: 1, width: '50%', marginTop: "1rem"}}/>
-            <h1 className={styles.title}>@FerreroRopher</h1>
-            <h3>[Commissions Open]</h3>
           </header>
           <nav 
             // className={`${styles.nav} ${pageN == 0 && styles.navSlideHome} ${pageN == 1 && styles.navSlidePrices} ${pageN == 2 && styles.navSlideTOS}`}
