@@ -33,10 +33,20 @@ export default function Index() {
   const [navPosition, setNavPosition] = useState(0)
   const [navSize, setNavSize] = useState(55)
   const [positions, setPositions] = useState(Array(pages.length).fill(0))
-  const [scroll, setScroll] = useState(0)
-  const handleScroll = () => {
-    setScroll(window.pageYOffset);
+  const [navHeight, setNavHeight] = useState(0)
+  const [navWidth, setNavWidth] = useState(0)
+  const [navY,setNavY] = useState(0)
+  const [fixedNav, setFixedNav] = useState(true)
+
+  const navRef = useRef(null)
+
+  let handleScroll = () => {
+    if ((window.pageYOffset >= navY) && fixedNav == false){setFixedNav(true)}
+    else if ((window.pageYOffset < navY) && fixedNav == true){setFixedNav(false)}
   };
+  useEffect(() => {
+    console.log(navY)
+  }, [navY])
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -44,9 +54,10 @@ export default function Index() {
     return () => {
         window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [navY, fixedNav]);
 
   useEffect(() => {
+    //get x position of navBox
     let temp = Array(pages.length).fill(0)
     for (let i = 0; i < pages.length; i++) {
       for (let j = 0; j < pages.length; j++) {
@@ -57,6 +68,18 @@ export default function Index() {
     }
     setPositions(temp)
   }, [pages[0].ref])
+
+  useEffect(() => {
+    setNavWidth(navRef.current.offsetWidth)
+    setNavHeight(navRef.current.offsetHeight)
+  }, [navRef])
+
+  useEffect(() => {
+    setNavY(navRef.current.getClientRects()[0].y + window.scrollY)
+    console.log("set Y")
+  }, [])
+
+
 
   useEffect(() => {
     for (let i = 0; i < pages.length; i++) {
@@ -95,16 +118,22 @@ export default function Index() {
             <h1 className={styles.title}>@FerreroRopher</h1>
             <h4>Commissions Open</h4>
           </header>
+          <div className={styles.navBackground} style={{height: `calc(${navHeight}px - 4px)`, width: navWidth, opacity: fixedNav?1:0}}/>
           <nav 
             // className={`${styles.nav} ${pageN == 0 && styles.navSlideHome} ${pageN == 1 && styles.navSlidePrices} ${pageN == 2 && styles.navSlideTOS}`}
             className={`${styles.nav}`}
-            style={{backgroundPosition: navPosition, backgroundSize: navSize}}
+            style={{
+              backgroundPosition: navPosition,
+              backgroundSize: navSize, 
+              position: fixedNav?'fixed':'initial',
+              top: fixedNav?'0px':'unset'
+            }}
+            ref={navRef}
           >
-            <div className={styles.navBackground}/>
             <div className={styles.navTextWrapper}>
               {pages.map((page,index) => {
                 return (
-                  <button onClick={() => {setPageN(index)}} className={styles.homeBut} ref={page.ref}>
+                  <button onClick={() => {setPageN(index)}} ref={page.ref}>
                     <h5 className={styles.navText} style={{fontWeight: pageN == index?'700':'300'}}>{page.name}</h5>
                   </button>
                 )

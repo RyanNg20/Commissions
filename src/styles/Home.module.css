@@ -23,30 +23,28 @@
   background: linear-gradient(to top,white, white);
   background-repeat: no-repeat;
   background-clip: text;
-  transition: background-position 0.5s, background-size 0.5s;
+  transition: background-position 0.5s, background-size 0.5s, width 1s;
   width: 100%;
-  margin-top: 4rem;
-  /* position: fixed;
-  top: 0px; */
+
 }
 
-/* .navBackground {
-  position: absolute;
-  height: 100%;
+.navBackground {
+  position: fixed;
+  height: calc(100% - 4px);
   width: 100%;
   background-color: rgba(0,0,0,0.7);
-  z-index: -1;
-} */
+  top: 0px;
+  transition: opacity 1s;
+  z-index: 1;
+}
 .navTextWrapper {
   color: var(--faded-white);
-  z-index: 1;
 }
 
 .navLine {
   background-color: var(--faded-white);
   height: 1px;
   width: 100%;
-  z-index: 1;
 }
 .navBox {
   height: 3px;
@@ -54,11 +52,10 @@
   position: relative;
   top: -1px;
   transition: left 0.5s, width 0.5s;
-  z-index: 1;
 }
+
 .navText {
-  margin: 0.5rem 1.5rem 0.5rem 1.5rem;
-  z-index: 1;
+  margin: 0.8rem 1.5rem 0.8rem 1.5rem;
 }
 
 .title {
@@ -103,7 +100,7 @@
   height: fit-content;
   padding: 7px 7px 7px 7px;
   transition: background-color 0.5s;
-  margin: 0px 20px 0px 20px;
+  margin: 0px 5px 0px 5px;
   border-radius: 100%;
 }
 .twitterWrapper:hover {
@@ -116,7 +113,6 @@
   fill: rgba(255,255,255,0.7);
   transition: fill 0.5s;
 }
-
 
 .deviantWrapper {
   display: flex;
