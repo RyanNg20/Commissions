@@ -91,7 +91,7 @@ export default function Index() {
                 <Deviant/>
               </a>
             </div>
-            <div style={{backgroundColor: 'rgba(255,255,255,0.5)', height: 1, width: '50%', marginTop: "4rem"}}/>
+            <div style={{backgroundColor: 'rgba(255,255,255,0.5)', height: 1, width: '50%', marginTop: "3rem"}}/>
             <h1 className={styles.title}>@FerreroRopher</h1>
             <h4>Commissions Open</h4>
           </header>
@@ -104,7 +104,7 @@ export default function Index() {
             <div className={styles.navTextWrapper}>
               {pages.map((page,index) => {
                 return (
-                  <button onClick={() => {setPageN(index)}} className={styles.homeBut} ref={page.ref}>
+                  <button onClick={() => {setPageN(index)}} className={styles.homeBut} ref={page.ref} key={page.name}>
                     <h5 className={styles.navText} style={{fontWeight: pageN == index?'700':'300'}}>{page.name}</h5>
                   </button>
                 )

@@ -29,7 +29,7 @@ html,
 body {
   color: white;
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow: hidden;
   background-size: 100vw 400vh;
   background-image: linear-gradient(to bottom,#F29B34, #C15D75, #B74EB9, #F29B34, #C15D75);
   /* animation: 20s linear infinite gradient; */
@@ -48,8 +48,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-items: center;
-  min-height: 250vh;
+  height: 100vh;
 }
 
 header {
