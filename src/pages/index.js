@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import styles from '@/styles/Index.module.css'
 import Deviant from '@/components/svg/deviant'
 import Instagram from '@/components/svg/instagram'
 import Twitter from '@/components/svg/twitter'
@@ -91,9 +91,12 @@ export default function Index() {
                 <Deviant/>
               </a>
             </div>
-            <div style={{backgroundColor: 'rgba(255,255,255,0.5)', height: 1, width: '50%', marginTop: "3rem"}}/>
-            <h1 className={styles.title}>@FerreroRopher</h1>
-            <h4>Commissions Open</h4>
+            <div 
+              className={styles.titleWrapper} 
+              style={{height: pageN == 0?120:0, opacity: pageN == 0?1:0, marginBottom: pageN == 0?'1rem':'1rem', marginTop: pageN == 0?'3rem':'1rem'}}>
+              <h1>@FerreroRopher</h1>
+              <h4>Commissions Open</h4>
+            </div>
           </header>
           <nav 
             // className={`${styles.nav} ${pageN == 0 && styles.navSlideHome} ${pageN == 1 && styles.navSlidePrices} ${pageN == 2 && styles.navSlideTOS}`}
@@ -113,9 +116,11 @@ export default function Index() {
             <div className={styles.navLine}/>
             <div className={styles.navBox} style={{width: navSize, left: navPosition}}/>
           </nav>
-          <Home pageN={pageN}/>
-          <Prices pageN={pageN}/>
-          <TOS pageN={pageN}/>
+          <div className={styles.contentWrapper}>
+            <Home pageN={pageN}/>
+            <Prices pageN={pageN}/>
+            <TOS pageN={pageN}/>
+          </div>
         </div>
       </main>
     </>

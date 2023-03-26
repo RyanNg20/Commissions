@@ -4,13 +4,14 @@
   --faded-white: rgba(255,255,255,0.3)
 }
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 5px;
+  height: 5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px;
 }
 
 /* Handle */
@@ -47,16 +48,16 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
 header {
-  /* transform: translateY(-200px); */
   display: flex;
   align-items: center;
   flex-direction: column;
-  z-index: 1;
+  z-index: 0;
 }
 
 button {
@@ -83,7 +84,7 @@ h2 {
 }
 
 h3 {
-  font-weight: 400;
+  font-weight: 600;
   font-size: 20px;
 }
 

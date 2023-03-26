@@ -6,7 +6,7 @@ const Prices = ({pageN}) => {
 
 
   return (
-    <div className={styles.pricesWrapper} style={{height: pageN == 1?700:0, opacity: pageN == 1?1:0, width: pageN == 1?700:0}}>
+    <div className={styles.pricesWrapper} style={{height: pageN == 1?700:0, opacity: pageN == 1?1:0, width: pageN == 1?1200:0}}>
       <h3 className={`${inria.className}`}>Busts: $30</h3>
       <div className={styles.bustWrapper}>
         <Image src="/4.png" height={320} width={320} alt="picture of orange-haired girl"/>
