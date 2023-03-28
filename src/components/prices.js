@@ -15,10 +15,8 @@ const Prices = ({pageN}) => {
       </div>
       <h3 className={`${inria.className}`}>Thigh-Up: $40</h3>
       <div className={`${styles.thighWrapper}`}>
-        <Image src="/4.png" height={320} width={320} alt="picture of orange-haired girl"/>
-        <Image src="/3.png" height={320} width={356} alt="picture of Ryo Yamada"/>
-        <Image src="/5.png" height={320} width={320} alt="picture of blue-haired girl"/>
-        <Image src="/6.png" height={320} width={320} alt="picture of neko girl"/>
+        <Image src="/1.png" height={320} width={320} alt="picture of girl in red"/>
+        <Image src="/2.png" height={320} width={356} alt="picture of picture of girl in sweater"/>
       </div>
     </div>
   )

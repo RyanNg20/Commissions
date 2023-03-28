@@ -8,21 +8,15 @@
   position: relative;
   overflow: hidden;
   transform: scale(1);
+  max-width: calc(100vw - 1rem);
 }
 .box {
   background-color: rgba(0,0,0,0.7);
   border-radius: 20px;
   position: absolute;
   width: 100%;
-  height: calc(100% - 160px);
-  top: 160px;
-}
-
-.headerLine {
-  background-color: rgba(255,255,255,0.5);
-  width: 50%;
-  margin-top: 2rem;
-  height: 1px;
+  height: calc(100% - 140px);
+  top: 140px;
 }
 
 .nav {
@@ -33,17 +27,10 @@
   transition: background-position 0.5s, background-size 0.5s;
   width: 100%;
   padding-bottom: 1rem;
-  /* position: fixed;
-  top: 0px; */
+  /* white-space: nowrap; */
+
 }
 
-/* .navBackground {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0,0,0,0.7);
-  z-index: -1;
-} */
 .navTextWrapper {
   color: var(--faded-white);
   z-index: 1;
@@ -64,7 +51,7 @@
   z-index: 1;
 }
 .navText {
-  margin: 0.5rem 1.5rem 0.5rem 1.5rem;
+  margin: 0.5rem 1.2rem 0.5rem 1.2rem;
   z-index: 1;
 }
 
@@ -152,3 +139,15 @@
   z-index: 0;
 }
 
+@media screen and (max-width: 500px) {
+  .social {
+    transform: scale(1)
+  }
+  .nav {
+    display: none;
+  }
+  .box {
+    height: calc(100% - 130px);
+    top: 130px;
+  }
+}
