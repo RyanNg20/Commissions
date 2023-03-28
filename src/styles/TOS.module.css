@@ -1,4 +1,7 @@
 .tosWrapper {
   transition: height 1s, opacity 1s, width 1s;
-  z-index: 1;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-top: 1rem;
+  height: 1000px;
 }

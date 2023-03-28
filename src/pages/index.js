@@ -76,7 +76,7 @@ export default function Index() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${inter.className}`}>
-        <div className={styles.midground}>
+        <div className={styles.midground} style={{width: pageN == 0?500:pageN == 1?1200:900}}>
           <div className={styles.box}/>
           <header>
             <Image src={"/4.png"} alt="picture of a girl" width={250} height={250} priority className={styles.logo} quality={100}/>
