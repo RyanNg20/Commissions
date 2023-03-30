@@ -9,7 +9,7 @@ import HomeIcon from '@/components/svg/homeIcon.js'
 import PriceIcon from '@/components/svg/priceIcon.js'
 import TOSIcon from '@/components/svg/tosIcon.js'
 import { inter } from '@/components/fonts'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, Fragment } from 'react'
 import Prices from '@/components/prices'
 import TOS from '@/components/tos'
 import Home from '@/components/home'
@@ -118,17 +118,17 @@ export default function Index() {
             <div className={styles.navTextWrapper}>
               {pages.map((page,index) => {
                 return (
-                  <>
+                  <Fragment key={page.name}>
                     {windowWidth >= 500?
-                      <button onClick={() => {setPageN(index)}} className={styles.navButtons} ref={page.ref} key={page.name}>
+                      <button onClick={() => {setPageN(index)}} className={styles.navButtons} ref={page.ref}>
                         <h5 className={styles.navText} style={{fontWeight: pageN == index?'700':'300'}}>{page.name}</h5>
                       </button>:
-                      <button onClick={() => {setPageN(index)}} className={styles.navButtons} ref={page.ref} key={page.name}>
+                      <button onClick={() => {setPageN(index)}} className={styles.navButtons} ref={page.ref}>
                         <page.icon style={{fill: pageN == index?'white':'rgba(255,255,255,0.3)'}}/>
                       </button>
 
                     }
-                  </>
+                  </Fragment>
                 )
               })}
             </div>

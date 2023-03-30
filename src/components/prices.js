@@ -27,6 +27,7 @@ const Prices = ({pageN}) => {
               className={styles.bustImage}
               quality={75}
               key={src}
+              sizes={height}
             />
             // <div className={styles.bustImage} style={{backgroundImage: `url(/4.png)`}}/>
           )
