@@ -18,7 +18,16 @@ const Prices = ({pageN}) => {
       <div className={styles.bustWrapper}>
         {bustImages.map(({src, height, width, alt}) => {
           return (
-            <Image src={src} height={height} width={100} alt={alt} style={{objectFit: 'cover', margin: '0px 10px 0px 0px'}} className={styles.bustImage} quality={75}/>
+            <Image
+              src={src}
+              height={height}
+              width={100}
+              alt={alt}
+              style={{objectFit: 'cover', margin: '0px 10px 0px 0px'}}
+              className={styles.bustImage}
+              quality={75}
+              key={src}
+            />
             // <div className={styles.bustImage} style={{backgroundImage: `url(/4.png)`}}/>
           )
         })}
