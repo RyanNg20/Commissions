@@ -9,6 +9,7 @@
   overflow: hidden;
   transform: scale(1);
   max-width: calc(100vw - 1rem);
+  min-width: calc(260px - 1rem);
 }
 .box {
   background-color: rgba(0,0,0,0.7);
@@ -100,7 +101,7 @@
   height: fit-content;
   padding: 7px 7px 7px 7px;
   transition: background-color 0.5s;
-  margin: 0px 20px 0px 20px;
+  margin: 0px 10px 0px 10px;
   border-radius: 100%;
 }
 .twitterWrapper:hover {
@@ -135,19 +136,35 @@
   transition: fill 0.5s;
 }
 
+.homeIcon {
+  margin: 0.5rem 1rem 0.5rem 1rem;
+  z-index: 1;
+}
+.priceIcon {
+  margin: 0.5rem 1rem 0.5rem 1rem;
+  z-index: 1;
+}
+.tosIcon {
+  margin: 0.5rem 1rem 0.5rem 1rem;
+  z-index: 1;
+}
 .contentWrapper {
   z-index: 0;
+  width: 100%;
 }
 
 @media screen and (max-width: 500px) {
+  .midground {
+    padding: 1rem 3rem 1rem 3rem;
+  }
   .social {
     transform: scale(1)
-  }
-  .nav {
-    display: none;
   }
   .box {
     height: calc(100% - 130px);
     top: 130px;
   }
+}
+@media screen and (max-width: 345) {
+
 }

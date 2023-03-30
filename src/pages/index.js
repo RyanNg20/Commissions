@@ -5,6 +5,9 @@ import styles from '@/styles/Index.module.css'
 import Deviant from '@/components/svg/deviant'
 import Instagram from '@/components/svg/instagram'
 import Twitter from '@/components/svg/twitter'
+import HomeIcon from '@/components/svg/homeIcon.js'
+import PriceIcon from '@/components/svg/priceIcon.js'
+import TOSIcon from '@/components/svg/tosIcon.js'
 import { inter } from '@/components/fonts'
 import { useEffect, useState, useRef } from 'react'
 import Prices from '@/components/prices'
@@ -18,14 +21,17 @@ export default function Index() {
     {
       name: "Home",
       ref: useRef(null),
+      icon: HomeIcon,
     },
     {
       name: "Prices",
       ref: useRef(null),
+      icon: PriceIcon,
     },
     {
       name: "Terms of Service",
       ref: useRef(null),
+      icon: TOSIcon,
     },
   ]
 
@@ -38,6 +44,10 @@ export default function Index() {
   const [positions, setPositions] = useState(Array(pages.length).fill(0))
 
   useEffect(() => {
+    setWindowWidth(window.innerWidth)
+  }, [])
+
+  useEffect(() => {
     let tempPositions = Array(pages.length).fill(0)
     for (let i = 0; i < pages.length; i++) {
       for (let j = 0; j < pages.length; j++) {
@@ -47,7 +57,7 @@ export default function Index() {
       }
     }
     setPositions(tempPositions)
-  }, [pages[0].ref])
+  }, [pages[0].ref, windowWidth])
 
   useEffect(() => {
     for (let i = 0; i < pages.length; i++) {
@@ -56,7 +66,7 @@ export default function Index() {
         setNavPosition(positions[i])
       }
     }
-  }, [pageN])
+  }, [pageN, windowWidth])
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
@@ -108,9 +118,17 @@ export default function Index() {
             <div className={styles.navTextWrapper}>
               {pages.map((page,index) => {
                 return (
-                  <button onClick={() => {setPageN(index)}} className={styles.homeBut} ref={page.ref} key={page.name}>
-                    <h5 className={styles.navText} style={{fontWeight: pageN == index?'700':'300'}}>{page.name}</h5>
-                  </button>
+                  <>
+                    {windowWidth >= 500?
+                      <button onClick={() => {setPageN(index)}} className={styles.navButtons} ref={page.ref} key={page.name}>
+                        <h5 className={styles.navText} style={{fontWeight: pageN == index?'700':'300'}}>{page.name}</h5>
+                      </button>:
+                      <button onClick={() => {setPageN(index)}} className={styles.navButtons} ref={page.ref} key={page.name}>
+                        <page.icon style={{fill: pageN == index?'white':'rgba(255,255,255,0.3)'}}/>
+                      </button>
+
+                    }
+                  </>
                 )
               })}
             </div>
@@ -118,11 +136,11 @@ export default function Index() {
             <div className={styles.navBox} style={{width: navSize, left: navPosition}}/>
           </nav>
 
-          {/* <div className={styles.contentWrapper}>
+          <div className={styles.contentWrapper}>
             <Home pageN={pageN}/>
             <Prices pageN={pageN}/>
             <TOS pageN={pageN}/>
-          </div> */}
+          </div>
         </div>
       </main>
     </>
