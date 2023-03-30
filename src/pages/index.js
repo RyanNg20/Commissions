@@ -1,10 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import styles from '@/styles/Index.module.css'
 import Deviant from '@/components/svg/deviant'
 import Instagram from '@/components/svg/instagram'
 import Twitter from '@/components/svg/twitter'
+import HomeIcon from '@/components/svg/homeIcon.js'
+import PriceIcon from '@/components/svg/priceIcon.js'
+import TOSIcon from '@/components/svg/tosIcon.js'
 import { inter } from '@/components/fonts'
 import { useEffect, useState, useRef } from 'react'
 import Prices from '@/components/prices'
@@ -18,45 +21,43 @@ export default function Index() {
     {
       name: "Home",
       ref: useRef(null),
+      icon: HomeIcon,
     },
     {
       name: "Prices",
       ref: useRef(null),
+      icon: PriceIcon,
     },
     {
       name: "Terms of Service",
       ref: useRef(null),
+      icon: TOSIcon,
     },
   ]
 
   const [pageN, setPageN] = useState(0)
   const [navPosition, setNavPosition] = useState(0)
+  const [windowWidth, setWindowWidth] = useState(0)
+  //size of the white background box
   const [navSize, setNavSize] = useState(55)
+  //x coordinate of where white bar in nav should be
   const [positions, setPositions] = useState(Array(pages.length).fill(0))
-  const [scroll, setScroll] = useState(0)
-  const handleScroll = () => {
-    setScroll(window.pageYOffset);
-  };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-        window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+    setWindowWidth(window.innerWidth)
+  }, [])
 
   useEffect(() => {
-    let temp = Array(pages.length).fill(0)
+    let tempPositions = Array(pages.length).fill(0)
     for (let i = 0; i < pages.length; i++) {
       for (let j = 0; j < pages.length; j++) {
         if (j < i) {
-          temp[i] += pages[j].ref.current.offsetWidth
+          tempPositions[i] += pages[j].ref.current.offsetWidth
         }
       }
     }
-    setPositions(temp)
-  }, [pages[0].ref])
+    setPositions(tempPositions)
+  }, [pages[0].ref, windowWidth])
 
   useEffect(() => {
     for (let i = 0; i < pages.length; i++) {
@@ -65,8 +66,19 @@ export default function Index() {
         setNavPosition(positions[i])
       }
     }
-  }, [pageN])
+  }, [pageN, windowWidth])
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
 
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  });
+  console.log(windowWidth)
   return (
     <>
       <Head>
@@ -76,10 +88,10 @@ export default function Index() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${inter.className}`}>
-        <div className={styles.midground}>
+        <div className={styles.midground} style={{width: pageN == 0?470:pageN == 1?1200:900}}>
           <div className={styles.box}/>
           <header>
-            <Image src={"/4.png"} alt="picture of a girl" width={250} height={250} priority className={styles.logo} quality={100}/>
+            <Image src={"/4.png"} alt="picture of a girl" width={windowWidth >= 500?250:200} height={windowWidth >= 500?250:200} priority className={styles.logo} quality={100}/>
             <div className={styles.social}>
               <a rel='noreferrer noopener' target='_blank' href='https://www.instagram.com/ferreroropher/' className={styles.instagramWrapper}>
                 <Instagram/>
@@ -91,12 +103,14 @@ export default function Index() {
                 <Deviant/>
               </a>
             </div>
-            <div style={{backgroundColor: 'rgba(255,255,255,0.5)', height: 1, width: '50%', marginTop: "3rem"}}/>
-            <h1 className={styles.title}>@FerreroRopher</h1>
-            <h4>Commissions Open</h4>
+            <div 
+              className={styles.titleWrapper} 
+              style={{height: pageN == 0?(windowWidth >= 500?120:90):0, opacity: pageN == 0?1:0, marginBottom: pageN == 0?'1rem':'1rem', marginTop: pageN == 0?(windowWidth >= 500?'3rem': '1.5rem'):'1rem'}}>
+              <h1>@FerreroRopher</h1>
+              <h4>Commissions Open</h4>
+            </div>
           </header>
           <nav 
-            // className={`${styles.nav} ${pageN == 0 && styles.navSlideHome} ${pageN == 1 && styles.navSlidePrices} ${pageN == 2 && styles.navSlideTOS}`}
             className={`${styles.nav}`}
             style={{backgroundPosition: navPosition, backgroundSize: navSize}}
           >
@@ -104,18 +118,29 @@ export default function Index() {
             <div className={styles.navTextWrapper}>
               {pages.map((page,index) => {
                 return (
-                  <button onClick={() => {setPageN(index)}} className={styles.homeBut} ref={page.ref} key={page.name}>
-                    <h5 className={styles.navText} style={{fontWeight: pageN == index?'700':'300'}}>{page.name}</h5>
-                  </button>
+                  <>
+                    {windowWidth >= 500?
+                      <button onClick={() => {setPageN(index)}} className={styles.navButtons} ref={page.ref} key={page.name}>
+                        <h5 className={styles.navText} style={{fontWeight: pageN == index?'700':'300'}}>{page.name}</h5>
+                      </button>:
+                      <button onClick={() => {setPageN(index)}} className={styles.navButtons} ref={page.ref} key={page.name}>
+                        <page.icon style={{fill: pageN == index?'white':'rgba(255,255,255,0.3)'}}/>
+                      </button>
+
+                    }
+                  </>
                 )
               })}
             </div>
             <div className={styles.navLine}/>
             <div className={styles.navBox} style={{width: navSize, left: navPosition}}/>
           </nav>
-          <Home pageN={pageN}/>
-          <Prices pageN={pageN}/>
-          <TOS pageN={pageN}/>
+
+          <div className={styles.contentWrapper}>
+            <Home pageN={pageN}/>
+            <Prices pageN={pageN}/>
+            <TOS pageN={pageN}/>
+          </div>
         </div>
       </main>
     </>

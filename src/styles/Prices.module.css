@@ -1,11 +1,19 @@
 .pricesWrapper {
   transition: height 1s, opacity 1s, width 1s;
-  z-index: 1;
-  margin-top: 2rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .bustWrapper {
   display: flex;
   flex-direction: row;
-  overflow-x: scroll;
+  flex-wrap: wrap;
+}
+
+.bustImage {
+  transition: width 0.5s,
+}
+
+.bustImage:hover {
+  width: 320px;
 }
