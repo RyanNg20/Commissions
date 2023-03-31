@@ -32,7 +32,7 @@ const Prices = ({pageN}) => {
                 alt={alt}
                 style={{objectFit: 'cover'}}
                 className={styles.bustImage}
-                quality={75}
+                quality={40}
                 sizes={height}
                 onClick={() => {setBustClick(index)}}
               />
