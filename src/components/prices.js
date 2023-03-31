@@ -34,6 +34,7 @@ const Prices = ({pageN}) => {
                 quality={60}
                 sizes={height}
                 blurDataURL="/blur4.png"
+                loading="eager"
               />
             </div>
             // <div className={styles.bustImage} style={{backgroundImage: `url(/4.webp)`}}/>
@@ -54,6 +55,7 @@ const Prices = ({pageN}) => {
                 className={styles.bustImage}
                 quality={75}
                 sizes={height}
+                loading="eager"
               />
             </div>
             // <div className={styles.bustImage} style={{backgroundImage: `url(/4.webp)`}}/>
