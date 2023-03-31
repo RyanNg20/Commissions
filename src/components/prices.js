@@ -2,6 +2,7 @@ import styles from "../styles/Prices.module.css"
 import Image from "next/image"
 import { inria } from "./fonts"
 import bg from "../../public/4.png"
+import { useState } from "react"
 
 const Prices = ({pageN}) => {
 
@@ -12,31 +13,56 @@ const Prices = ({pageN}) => {
     {src:"/6.png", height:320, width:320, alt:"picture of neko girl"},
   ]
 
+  const thighImages = [
+    {src:"/1.png", height: 480, width: 320, alt:"picture of girl in cape"},
+    {src:"/2.png", height: 507, width: 320, alt:"picture of girl in sweater"},
+  ]
+
   return (
     <div className={styles.pricesWrapper} style={{height: pageN == 1?500:0, opacity: pageN == 1?1:0}}>
-      <h3 className={`${inria.className}`}>Busts: $30</h3>
+      <h3 className={`${inria.className}`} style={{padding: '20px 0px'}}>Busts: $30</h3>
       <div className={styles.bustWrapper}>
-        {bustImages.map(({src, height, width, alt}) => {
+        {bustImages.map(({src, height, width, alt}, index) => {
           return (
-            <Image
-              src={src}
-              height={height}
-              width={100}
-              alt={alt}
-              style={{objectFit: 'cover', margin: '0px 10px 0px 0px'}}
-              className={styles.bustImage}
-              quality={75}
-              key={src}
-              sizes={height}
-            />
+            <div className={styles.imageWrapper}>
+              <Image
+                src={src}
+                height={height}
+                width={100}
+                alt={alt}
+                style={{objectFit: 'cover'}}
+                className={styles.bustImage}
+                quality={75}
+                key={src}
+                sizes={height}
+                onClick={() => {setBustClick(index)}}
+              />
+            </div>
             // <div className={styles.bustImage} style={{backgroundImage: `url(/4.png)`}}/>
           )
         })}
       </div>
-      <h3 className={`${inria.className}`}>Thigh-Up: $40</h3>
+      <h3 className={`${inria.className}`} style={{padding: '20px 0px'}}>Thigh-Up: $40</h3>
       <div className={`${styles.thighWrapper}`}>
-        {/* <Image src="/1.png" height={320} width={320} alt="picture of girl in red"/>
-        <Image src="/2.png" height={320} width={356} alt="picture of picture of girl in sweater"/> */}
+        {thighImages.map(({src, height, width, alt}, index) => {
+          return (
+            <div className={styles.imageWrapper}>
+              <Image
+                src={src}
+                height={height}
+                width={100}
+                alt={alt}
+                style={{objectFit: 'cover', padding: '0px 10px 0px 0px'}}
+                className={styles.bustImage}
+                quality={75}
+                key={src}
+                sizes={height}
+                onClick={() => {setThighClick(index)}}
+              />
+            </div>
+            // <div className={styles.bustImage} style={{backgroundImage: `url(/4.png)`}}/>
+          )
+        })}
       </div>
     </div>
   )

@@ -107,11 +107,11 @@ p {
     font-size: 28px;
   }
   h2 {
-    font-size: 24px;
+    font-size: 20px;
   }
   
   h3 {
-    font-size: 20px;
+    font-size: 18px;
   }
   
   h4 {
@@ -122,6 +122,6 @@ p {
     font-size: 14px;
   }
   p {
-    font-size: 18px;
+    font-size: 16px;
   }
 }

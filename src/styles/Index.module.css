@@ -155,7 +155,7 @@
 
 @media screen and (max-width: 500px) {
   .midground {
-    padding: 1rem 3rem 1rem 3rem;
+    padding: 1rem 2rem 1rem 2rem;
   }
   .social {
     transform: scale(1)

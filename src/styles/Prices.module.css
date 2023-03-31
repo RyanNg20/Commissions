@@ -9,9 +9,18 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
-
+.thighWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 .bustImage {
   transition: width 0.5s,
+}
+
+.imageWrapper {
+  background-color: rgba(0,0,0,0.3);
+  margin: 0px 10px 0px 0px;
 }
 
 .bustImage:hover {
