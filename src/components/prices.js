@@ -24,7 +24,7 @@ const Prices = ({pageN}) => {
       <div className={styles.bustWrapper}>
         {bustImages.map(({src, height, width, alt}, index) => {
           return (
-            <div className={styles.imageWrapper}>
+            <div className={styles.imageWrapper} key={src}>
               <Image
                 src={src}
                 height={height}
@@ -33,7 +33,6 @@ const Prices = ({pageN}) => {
                 style={{objectFit: 'cover'}}
                 className={styles.bustImage}
                 quality={75}
-                key={src}
                 sizes={height}
                 onClick={() => {setBustClick(index)}}
               />
@@ -46,7 +45,7 @@ const Prices = ({pageN}) => {
       <div className={`${styles.thighWrapper}`}>
         {thighImages.map(({src, height, width, alt}, index) => {
           return (
-            <div className={styles.imageWrapper}>
+            <div className={styles.imageWrapper} key={src}>
               <Image
                 src={src}
                 height={height}
@@ -55,7 +54,6 @@ const Prices = ({pageN}) => {
                 style={{objectFit: 'cover', padding: '0px 10px 0px 0px'}}
                 className={styles.bustImage}
                 quality={75}
-                key={src}
                 sizes={height}
                 onClick={() => {setThighClick(index)}}
               />
