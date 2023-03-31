@@ -1,21 +1,20 @@
 import styles from "../styles/Prices.module.css"
 import Image from "next/image"
 import { inria } from "./fonts"
-import bg from "../../public/4.png"
 import { useState } from "react"
 
 const Prices = ({pageN}) => {
 
   const bustImages = [
-    {src:"/4.png", height: 320, width: 320, alt:"picture of orange-haired girl"},
-    {src:"/3.png", height:320, width:356, alt:"picture of Ryo Yamada"},
-    {src:"/5.png", height:320, width:320, alt:"picture of blue-haired girl"},
-    {src:"/6.png", height:320, width:320, alt:"picture of neko girl"},
+    {src:"/4.webp", height: 320, width: 320, alt:"picture of orange-haired girl"},
+    {src:"/3.webp", height:320, width:356, alt:"picture of Ryo Yamada"},
+    {src:"/5.webp", height:320, width:320, alt:"picture of blue-haired girl"},
+    {src:"/6.webp", height:320, width:320, alt:"picture of neko girl"},
   ]
 
   const thighImages = [
-    {src:"/1.png", height: 480, width: 320, alt:"picture of girl in cape"},
-    {src:"/2.png", height: 507, width: 320, alt:"picture of girl in sweater"},
+    {src:"/1.webp", height: 500, width: 320, alt:"picture of girl in cape"},
+    {src:"/2.webp", height: 500, width: 320, alt:"picture of girl in sweater"},
   ]
 
   return (
@@ -30,14 +29,14 @@ const Prices = ({pageN}) => {
                 height={height}
                 width={100}
                 alt={alt}
-                style={{objectFit: 'cover'}}
+                style={{objectFit: 'cover', padding: '0px 10px 0px 0px'}}
                 className={styles.bustImage}
-                quality={40}
+                quality={60}
                 sizes={height}
-                onClick={() => {setBustClick(index)}}
+                blurDataURL="/blur4.png"
               />
             </div>
-            // <div className={styles.bustImage} style={{backgroundImage: `url(/4.png)`}}/>
+            // <div className={styles.bustImage} style={{backgroundImage: `url(/4.webp)`}}/>
           )
         })}
       </div>
@@ -55,10 +54,9 @@ const Prices = ({pageN}) => {
                 className={styles.bustImage}
                 quality={75}
                 sizes={height}
-                onClick={() => {setThighClick(index)}}
               />
             </div>
-            // <div className={styles.bustImage} style={{backgroundImage: `url(/4.png)`}}/>
+            // <div className={styles.bustImage} style={{backgroundImage: `url(/4.webp)`}}/>
           )
         })}
       </div>
