@@ -19,12 +19,15 @@ const Modal = ({clickedImage, setClickedImage}) => {
           onClick={(e) => {setClickedImage(0)}}
         >
           <Image
-            width={500}
-            height={500/clickedImage.ratio}
+            width={600}
+            height={600/clickedImage.ratio}
             src={'/large' + clickedImage.src}
-            style={{maxHeight: `${90/clickedImage.ratio}vw`, maxWidth: '90vw', backgroundColor: 'black',}}
-            onClick={(e) => {e.stopPropagation()}}
+            style={{maxHeight: `min(${90/clickedImage.ratio}vw, 90vh)`, maxWidth: `min(90vw, ${90 * clickedImage.ratio}vh)`, backgroundColor: 'black', objectFit: 'cover'}}
             loading="eager"
+            priority={true}
+            quality={100}
+            sizes={Math.max(600, 600/clickedImage.ratio)}
+            blurDataURL="/blur4"
           />
         </div>
       }
