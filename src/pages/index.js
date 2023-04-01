@@ -12,8 +12,7 @@ import { inter } from '@/components/fonts'
 import { useEffect, useState, useRef, Fragment } from 'react'
 import Prices from '@/components/prices'
 import TOS from '@/components/tos'
-import Home from '@/components/home'
-
+import Modal from '@/components/modal'
 
 
 export default function Index() {
@@ -42,12 +41,8 @@ export default function Index() {
   const [navSize, setNavSize] = useState(55)
   //x coordinate of where white bar in nav should be
   const [positions, setPositions] = useState(Array(pages.length).fill(0))
-  const [contentWrapperHeight, setContentWrapperHeight] = useState(0)
-  const contentWrapperRef = useRef(null)
+  const [clickedImage, setClickedImage] = useState(0)
 
-  useEffect(() => {
-    setContentWrapperHeight(contentWrapperRef.current.offsetHeight)
-  }, [contentWrapperRef])
 
   useEffect(() => {
     setWindowWidth(window.innerWidth)
@@ -73,19 +68,17 @@ export default function Index() {
       }
     }
   }, [pageN, windowWidth])
+
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
-      setContentWrapperHeight(contentWrapperRef.current.offsetHeight)
     };
-
     window.addEventListener('resize', handleWindowResize);
-
     return () => {
       window.removeEventListener('resize', handleWindowResize);
     };
   });
-  console.log(contentWrapperHeight)
+
   return (
     <>
       <Head>
@@ -95,6 +88,7 @@ export default function Index() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${inter.className}`}>
+        <Modal clickedImage={clickedImage} setClickedImage={setClickedImage}/>
         <div className={styles.midground} style={{width: pageN == 0?470:pageN == 1?1800:1100}}>
           <div className={styles.box}/>
           <header>
@@ -152,8 +146,8 @@ export default function Index() {
             <div className={styles.navBox} style={{width: navSize, left: navPosition}}/>
           </nav>
 
-          <div className={styles.contentWrapper} ref={contentWrapperRef}>
-            <Prices pageN={pageN} windowWidth={windowWidth}/>
+          <div className={styles.contentWrapper}>
+            <Prices pageN={pageN} windowWidth={windowWidth} setClickedImage={setClickedImage}/>
             <TOS pageN={pageN} windowWidth={windowWidth}/>
           </div>
         </div>

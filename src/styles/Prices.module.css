@@ -23,13 +23,17 @@
 } */
 
 .imageWrapper {
-  background-color: rgba(0,0,0,0.3);
+  background-color: #2D1912;
   /* margin: 0px 10px 0px 0px; */
   height: fit-content;
   display: flex;
   margin: 5px;
+  transition: transform 0.3s;
+  cursor: pointer;
 }
-
+.imageWrapper:hover {
+  transform: scale(1.1);
+}
 /* .priceImage:hover {
   width: 320px;
 } */
