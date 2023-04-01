@@ -2,29 +2,37 @@
   transition: height 1s, opacity 1s, width 1s;
   overflow-y: scroll;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
 }
 
 .bustWrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
 }
 .thighWrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-.bustImage {
-  transition: width 0.5s,
-}
+/* .priceImage {
+  transition: width 0.5s;
+} */
 
 .imageWrapper {
   background-color: rgba(0,0,0,0.3);
   /* margin: 0px 10px 0px 0px; */
   height: fit-content;
   display: flex;
+  margin: 5px;
 }
 
-.bustImage:hover {
+/* .priceImage:hover {
   width: 320px;
+} */
+@media screen {
+  
 }

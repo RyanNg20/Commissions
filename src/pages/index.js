@@ -42,6 +42,12 @@ export default function Index() {
   const [navSize, setNavSize] = useState(55)
   //x coordinate of where white bar in nav should be
   const [positions, setPositions] = useState(Array(pages.length).fill(0))
+  const [contentWrapperHeight, setContentWrapperHeight] = useState(0)
+  const contentWrapperRef = useRef(null)
+
+  useEffect(() => {
+    setContentWrapperHeight(contentWrapperRef.current.offsetHeight)
+  }, [contentWrapperRef])
 
   useEffect(() => {
     setWindowWidth(window.innerWidth)
@@ -70,6 +76,7 @@ export default function Index() {
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
+      setContentWrapperHeight(contentWrapperRef.current.offsetHeight)
     };
 
     window.addEventListener('resize', handleWindowResize);
@@ -78,7 +85,7 @@ export default function Index() {
       window.removeEventListener('resize', handleWindowResize);
     };
   });
-  console.log(windowWidth)
+  console.log(contentWrapperHeight)
   return (
     <>
       <Head>
@@ -88,7 +95,7 @@ export default function Index() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${inter.className}`}>
-        <div className={styles.midground} style={{width: pageN == 0?470:pageN == 1?1200:1100}}>
+        <div className={styles.midground} style={{width: pageN == 0?470:pageN == 1?1800:1100}}>
           <div className={styles.box}/>
           <header>
             <Image
@@ -145,10 +152,9 @@ export default function Index() {
             <div className={styles.navBox} style={{width: navSize, left: navPosition}}/>
           </nav>
 
-          <div className={styles.contentWrapper}>
-            <Home pageN={pageN}/>
-            <Prices pageN={pageN}/>
-            <TOS pageN={pageN}/>
+          <div className={styles.contentWrapper} ref={contentWrapperRef}>
+            <Prices pageN={pageN} windowWidth={windowWidth}/>
+            <TOS pageN={pageN} windowWidth={windowWidth}/>
           </div>
         </div>
       </main>

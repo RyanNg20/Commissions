@@ -1,6 +1,6 @@
 .midground {
   margin-bottom: 1rem;
-  padding: 1rem 5rem 1rem 5rem;
+  padding: 1rem 4rem 1rem 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,7 +26,7 @@
   background-repeat: no-repeat;
   background-clip: text;
   transition: background-position 0.5s, background-size 0.5s;
-  width: 100%;
+  width: calc(100% - 2rem);
   padding-bottom: 1rem;
   /* white-space: nowrap; */
 
@@ -66,15 +66,18 @@
 
 .logo{
   border-radius: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .social {
   margin-top: 1rem;
-  /* transform: scale(1.2); */
   display: flex;
   flex-direction: row;
   height: fit-content;
-  transform: scale(1.1)
+  transform: scale(1.1);
+  margin-left: auto;
+  margin-right: auto;
 }
 .instagramWrapper {
   display: flex;
@@ -150,12 +153,12 @@
 }
 .contentWrapper {
   z-index: 0;
-  width: 100%;
+  width: calc(100% - 2rem)
 }
 
 @media screen and (max-width: 500px) {
   .midground {
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 1rem 0rem 1rem 0rem;
   }
   .social {
     transform: scale(1)
@@ -164,7 +167,4 @@
     height: calc(100% - 130px);
     top: 130px;
   }
-}
-@media screen and (max-width: 345) {
-
 }
