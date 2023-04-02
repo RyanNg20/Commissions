@@ -26,6 +26,7 @@ const Modal = ({clickedImage, setClickedImage}) => {
             loading="eager"
             priority={true}
             quality={75}
+            sizes={Math.max(600, 600/clickedImage.ratio)}
             blurDataURL="/blur4"
             alt={clickedImage.alt}
           />
