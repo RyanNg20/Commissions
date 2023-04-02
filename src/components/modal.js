@@ -25,8 +25,7 @@ const Modal = ({clickedImage, setClickedImage}) => {
             style={{maxHeight: `min(${90/clickedImage.ratio}vw, 90vh)`, maxWidth: `min(90vw, ${90 * clickedImage.ratio}vh)`, backgroundColor: 'black', objectFit: 'cover'}}
             loading="eager"
             priority={true}
-            quality={100}
-            sizes={Math.max(600, 600 * clickedImage.ratio)}
+            quality={75}
             blurDataURL="/blur4"
             alt={clickedImage.alt}
           />
