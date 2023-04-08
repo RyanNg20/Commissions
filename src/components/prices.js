@@ -16,6 +16,7 @@ const Prices = ({pageN, windowWidth, setClickedImage}) => {
   ]
 
   const thighImages = [
+    {src:"14.webp", alt:"picture of Yasumi from Persona 5", ratio: 0.63},
     {src:"1.webp", alt:"picture of girl in cape", ratio: 0.66},
     {src:"2.webp", alt:"picture of girl in sweater", ratio: 0.63},
     {src:"7.webp", alt:"picture of girl in bikini", ratio: 0.7},
@@ -26,7 +27,7 @@ const Prices = ({pageN, windowWidth, setClickedImage}) => {
     <div className={styles.pricesWrapper} style={{height: pageN == 1?'calc(100vh - 380px - 3rem)':0, opacity: pageN == 1?1:0}}>
       <h2 style={{marginBottom: 10}}>Prices</h2>
       <p style={{marginBottom: 20}}>These are base prices and may vary.</p>
-      <h3 className={`${inria.className}`} style={{padding: '20px 0px'}}>Busts: $30</h3>
+      <h3 className={`${inria.className}`} style={{padding: '20px 0px'}}>Busts: $35</h3>
       <div className={styles.bustWrapper}>
         {bustImages.map((bustImage) => {
           return (
@@ -47,7 +48,7 @@ const Prices = ({pageN, windowWidth, setClickedImage}) => {
           )
         })}
       </div>
-      <h3 className={`${inria.className}`} style={{padding: '20px 0px'}}>Thigh-Up: $40</h3>
+      <h3 className={`${inria.className}`} style={{padding: '20px 0px'}}>Thigh-Up: $60</h3>
       <div className={`${styles.thighWrapper}`}>
         {thighImages.map((thighImage) => {
           return (
